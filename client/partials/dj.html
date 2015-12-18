@@ -1,0 +1,181 @@
+<div class="container">
+
+  <br><br>
+  <div class="row">
+    <div class="col s6 left">
+
+      <!--Search bar-->
+      <nav>
+          <div class="nav-wrapper">
+            <form>
+              <div class="input-field">
+                <input id="search1" id="search" type="search" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+      </nav>
+
+      <div class="collection" id="collection1">
+         <a id="li1-1" class="collection-item"></a>
+         <a id="li1-2" class="collection-item"></a>
+         <a id="li1-3" class="collection-item"></a>
+         <a id="li1-4" class="collection-item"></a>
+         <a id="li1-5" class="collection-item"></a>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <span id="append1"></span>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="col s6 right">
+
+        <!--Search bar-->
+          <nav>
+              <div class="nav-wrapper">
+                <form>
+                  <div class="input-field">
+                    <input id="search2" type="search" required>
+                    <label for="search"><i class="material-icons">search</i></label>
+                    <i class="material-icons">close</i>
+                  </div>
+                </form>
+              </div>
+        </nav>
+
+        <div class="collection" id="collection2">
+         <a id="li2-1" class="collection-item"></a>
+         <a id="li2-2" class="collection-item"></a>
+         <a id="li2-3" class="collection-item"></a>
+         <a id="li2-4" class="collection-item"></a>
+         <a id="li2-5" class="collection-item"></a>
+       </div>
+
+        <span id="append2"></span>
+
+    </div>
+  </div>
+
+  <br><hr><br>
+  <!--This is where the control panel goes-->
+
+  <div class="row row-1">
+
+    <div class="col s3 center">
+      <div class="chip">Horn</div><br><br>
+      <a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a>
+    </div>
+
+    <div class="col s3 center">
+      <div class="chip">Really Nigga</div><br><br>
+      <a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a>
+    </div>
+
+    <div class="col s3 center">
+      <div class="chip">Crickets</div><br><br>
+      <a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a>
+    </div>
+
+    <div class="col s3 center">
+      <div class="chip">More Mods</div><br><br>
+      <a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a>
+    </div>
+  </div>
+
+  <div class="row row-1">
+    <div class="col s3 center"><a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a></div>
+    <div class="col s3 center"><a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a></div>
+    <div class="col s3 center"><a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a></div>
+    <div class="col s3 center"><a class="btn-floating btn-large waves-effect waves-light red center"><i class="material-icons center">add</i></a></div>
+  </div>
+
+</div>
+
+
+<style media="screen">
+  #collection1 {
+    display: none;
+  }
+  #collection2 {
+    display: none;
+  }
+</style>
+
+
+<script>
+  // initialize the soundcloud api
+
+  var GLOBAL_PLAYER_ONE = false;
+  var GLOBAL_PLAYER_TWO = false;
+
+
+
+  SC.initialize({
+    client_id: '8214b362bafcc90d268a35aa7d6de6e0',
+    single_active: false,
+    default_height: 200
+  });
+
+  $('#search1').keyup(function(event){
+    $('#collection1').fadeIn();
+    // capture search string first
+    var searchString = $('#search1').val();
+
+    SC.get('/tracks', {
+      q: searchString,
+      limit: '5'
+    }).then(function(tracks) {
+      console.log('TRACKS', tracks[0].uri);
+      console.log(tracks)
+      for(var i = 1; i < 6; i++){
+        $('#li1-' + i).html(tracks[i-1].title + '<br><hr>' + '<img src=' + tracks[i-1].artwork_url + '>');
+        $('#li1-' + i).fadeIn();
+      }
+
+      if (event.keyCode == 13){
+        var track_url = tracks[0].uri;
+        SC.oEmbed(track_url, { auto_play: true, single_active: false, maxheight: 200 }).then(function(oEmbed) {
+          console.log('oEmbed response: ', oEmbed);
+          $('#append1').append(oEmbed.html + '<br>' + "<a class='waves-effect waves-light btn'>Stuff</a>" + '<br>');
+          $('#collection1').fadeOut();
+        });
+      }
+    });
+  });
+
+
+  $('#search2').keyup(function(event){
+    $('#collection2').fadeIn();
+    // capture search string first
+    var searchString = $('#search2').val();
+
+    SC.get('/tracks', {
+      q: searchString,
+      limit: '5'
+    }).then(function(tracks) {
+      console.log('TRACKS', tracks[0].uri);
+      console.log(tracks)
+      for(var i = 1; i < 6; i++){
+        $('#li2-' + i).html(tracks[i-1].title + '<br><hr>' + '<img src=' + tracks[i-1].artwork_url + '>');
+        $('#li2-' + i).fadeIn();
+      }
+
+      if (event.keyCode == 13){
+        var track_url = tracks[0].uri;
+        SC.oEmbed(track_url, { auto_play: true, single_active: false, maxheight: 200 }).then(function(oEmbed) {
+          $('#append2').append(oEmbed.html);
+          $('#collection2').fadeOut();
+        });
+      }
+    });
+  });
+
+  // find all sounds of buskers licensed under 'creative commons share alike'
+
+</script>
