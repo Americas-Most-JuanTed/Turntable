@@ -297,6 +297,7 @@
       value: 100,
       slide: function(event, ui){
         // capture both elements
+        //console.log(ui.value);
         var widget1 = null;
         var widget2 = null;
 
@@ -307,24 +308,26 @@
           widget2 = SC.Widget(document.getElementById('tracktwo'));
         }
 
+
         if (ui.value < 100){
-          widget1.getVolume(function(volume){
+
+          widget2.getVolume(function(volume){
             var decVol = (ui.value / Math.pow(100, 1));
-            widget1.setVolume(decVol);
+            console.log(" < 100", decVol);
+            widget2.setVolume(decVol);
           })
+
         }
         if (ui.value == 100){
-          widget1.getVolume(function(volume){
-            widget1.setVolume(100);
-          })
-          widget2.getVolume(function(volume){
-            widget2.setVolume(100);
-          })
+          widget1.setVolume(1);
+          widget2.setVolume(1);
         }
         if (ui.value > 100){
-          widget2.getVolume(function(volume){
-            var decVol = ((ui.value - 100) / Math.pow(100, 1));
-            widget2.setVolume(decVol);
+          widget1.getVolume(function(volume){
+            var decVol = ((ui.value) / Math.pow(100, 1));
+            decVol = 2 - decVol;
+            console.log('> 100', decVol);
+            widget1.setVolume(decVol);
           })
         }
         //console.log(ui.value);
