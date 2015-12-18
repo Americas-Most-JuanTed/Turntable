@@ -1,3 +1,25 @@
+
+<script type="text/javascript">
+  $('#local-nav').addClass('black');
+</script>
+
+
+
+ <script src="http://w.soundcloud.com/player/api.js"></script>
+
+
+
+<br><br>
+<div class="container">
+  <h5 class="center"><b>Hood Hypes</b></h5>
+</div>
+
+<style media="screen">
+  h5 {
+    color: white
+  }
+</style>
+
 <div class="container">
 
   <br><br>
@@ -6,7 +28,7 @@
 
       <!--Search bar-->
       <nav>
-          <div class="nav-wrapper">
+          <div class="nav-wrapper black">
             <form>
               <div class="input-field">
                 <input  autocomplete="off" id="search1" id="search" type="search" required>
@@ -18,11 +40,11 @@
       </nav>
 
       <div class="collection" id="collection1">
-         <a id="li1-1" class="collection-item center"></a>
-         <a id="li1-2" class="collection-item center"></a>
-         <a id="li1-3" class="collection-item center"></a>
-         <a id="li1-4" class="collection-item center"></a>
-         <a id="li1-5" class="collection-item center"></a>
+         <a id="li1-1" class="collection-item"></a>
+         <a id="li1-2" class="collection-item"></a>
+         <a id="li1-3" class="collection-item"></a>
+         <a id="li1-4" class="collection-item"></a>
+         <a id="li1-5" class="collection-item"></a>
       </div>
 
       <div class="row">
@@ -38,7 +60,7 @@
 
         <!--Search bar-->
           <nav>
-              <div class="nav-wrapper">
+              <div class="nav-wrapper black">
                 <form>
                   <div class="input-field">
                     <input id="search2" type="search" required>
@@ -50,11 +72,11 @@
         </nav>
 
         <div class="collection" id="collection2">
-         <a id="li2-1" class="collection-item center"></a>
-         <a id="li2-2" class="collection-item center"></a>
-         <a id="li2-3" class="collection-item center"></a>
-         <a id="li2-4" class="collection-item center"></a>
-         <a id="li2-5" class="collection-item center"></a>
+         <a id="li2-1" class="collection-item"></a>
+         <a id="li2-2" class="collection-item"></a>
+         <a id="li2-3" class="collection-item"></a>
+         <a id="li2-4" class="collection-item"></a>
+         <a id="li2-5" class="collection-item"></a>
        </div>
 
         <span id="append2"></span>
@@ -72,28 +94,28 @@
   <!--This is where the control panel goes-->
   <div class="row row-1">
     <div class="col s3 center">
-      <button onclick="document.getElementById('air_horn').pause();document.getElementById('air_horn').currentTime = 0; document.getElementById('air_horn').play()" class="waves-effect waves-light btn">Air Horn</button>
+      <button onclick="document.getElementById('air_horn').pause();document.getElementById('air_horn').currentTime = 0; document.getElementById('air_horn').play()" class="waves-effect waves-light btn black">Air Horn</button>
     	<audio id="air_horn">
     	  <source src="./sounds/air_horn.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('shotgun').pause();document.getElementById('shotgun').currentTime = 0; document.getElementById('shotgun').play()"  class="waves-effect waves-light btn">Shotgun</button>
+      <button onclick="document.getElementById('shotgun').pause();document.getElementById('shotgun').currentTime = 0; document.getElementById('shotgun').play()"  class="waves-effect waves-light btn black">Shotgun</button>
     	<audio id="shotgun">
     	  <source src="./sounds/shotgun.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('awe_yeah').pause();document.getElementById('awe_yeah').currentTime = 0; document.getElementById('awe_yeah').play()"  class="waves-effect waves-light btn">Awe Yeah</button>
+      <button onclick="document.getElementById('awe_yeah').pause();document.getElementById('awe_yeah').currentTime = 0; document.getElementById('awe_yeah').play()"  class="waves-effect waves-light btn black">Awe Yeah</button>
     	<audio id="awe_yeah">
     	  <source src="./sounds/awe_yeah.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('evil_laugh').pause();document.getElementById('evil_laugh').currentTime = 0; document.getElementById('evil_laugh').play()"  class="waves-effect waves-light btn">Evil Laugh</button>
+      <button onclick="document.getElementById('evil_laugh').pause();document.getElementById('evil_laugh').currentTime = 0; document.getElementById('evil_laugh').play()"  class="waves-effect waves-light btn black">Evil Laugh</button>
     	<audio id="evil_laugh">
     	  <source src="./sounds/evil_laugh.mp3">
     	</audio>
@@ -104,28 +126,28 @@
     <div class="row row-2">
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('lazer').pause();document.getElementById('lazer').currentTime = 0; document.getElementById('lazer').play()"  class="waves-effect waves-light btn">Lazer</button>
+      <button onclick="document.getElementById('lazer').pause();document.getElementById('lazer').currentTime = 0; document.getElementById('lazer').play()"  class="waves-effect waves-light btn black">Lazer</button>
     	<audio id="lazer">
     	  <source src="./sounds/lazer.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('monster_kill').pause();document.getElementById('monster_kill').currentTime = 0; document.getElementById('monster_kill').play()"  class="waves-effect waves-light btn">Monster Kill</button>
+      <button onclick="document.getElementById('monster_kill').pause();document.getElementById('monster_kill').currentTime = 0; document.getElementById('monster_kill').play()"  class="waves-effect waves-light btn black">Monster Kill</button>
     	<audio id="monster_kill">
     	  <source src="./sounds/monster_kill.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('msn').pause();document.getElementById('msn').currentTime = 0; document.getElementById('msn').play()"  class="waves-effect waves-light btn">MSN</button>
+      <button onclick="document.getElementById('msn').pause();document.getElementById('msn').currentTime = 0; document.getElementById('msn').play()"  class="waves-effect waves-light btn black">MSN</button>
     	<audio id="msn">
     	  <source src="./sounds/msn.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('pydu').pause();document.getElementById('pydu').currentTime = 0; document.getElementById('pydu').play()"  class="waves-effect waves-light btn">PYDU</button>
+      <button onclick="document.getElementById('pydu').pause();document.getElementById('pydu').currentTime = 0; document.getElementById('pydu').play()"  class="waves-effect waves-light btn black">PYDU</button>
     	<audio id="pydu">
     	  <source src="./sounds/pydu.mp3">
     	</audio>
@@ -136,28 +158,28 @@
   <div class="row row-3">
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('remix').pause();document.getElementById('remix').currentTime = 0; document.getElementById('remix').play()"  class="waves-effect waves-light btn">Remix</button>
+      <button onclick="document.getElementById('remix').pause();document.getElementById('remix').currentTime = 0; document.getElementById('remix').play()"  class="waves-effect waves-light btn black">Remix</button>
     	<audio id="remix">
     	  <source src="./sounds/remix.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('tiwwf').pause();document.getElementById('tiwwf').currentTime = 0; document.getElementById('tiwwf').play()"  class="waves-effect waves-light btn">TIWWF</button>
+      <button onclick="document.getElementById('tiwwf').pause();document.getElementById('tiwwf').currentTime = 0; document.getElementById('tiwwf').play()"  class="waves-effect waves-light btn black">TIWWF</button>
     	<audio id="tiwwf">
     	  <source src="./sounds/tiwwf.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('yeah').pause();document.getElementById('yeah').currentTime = 0; document.getElementById('yeah').play()"  class="waves-effect waves-light btn">Yeah</button>
+      <button onclick="document.getElementById('yeah').pause();document.getElementById('yeah').currentTime = 0; document.getElementById('yeah').play()"  class="waves-effect waves-light btn black">Yeah</button>
     	<audio id="yeah">
     	  <source src="./sounds/yeah.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('scratch_1').pause();document.getElementById('scratch_1').currentTime = 0; document.getElementById('scratch_1').play()"  class="waves-effect waves-light btn">Scratch 1</button>
+      <button onclick="document.getElementById('scratch_1').pause();document.getElementById('scratch_1').currentTime = 0; document.getElementById('scratch_1').play()"  class="waves-effect waves-light btn black">Scratch 1</button>
     	<audio id="scratch_1">
     	  <source src="./sounds/scratch_1.mp3">
     	</audio>
@@ -168,28 +190,28 @@
   <div class="row row-4">
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('scratch_2').pause();document.getElementById('scratch_2').currentTime = 0; document.getElementById('scratch_2').play()"  class="waves-effect waves-light btn">Scratch 2</button>
+      <button onclick="document.getElementById('scratch_2').pause();document.getElementById('scratch_2').currentTime = 0; document.getElementById('scratch_2').play()"  class="waves-effect waves-light btn black">Scratch 2</button>
     	<audio id="scratch_2">
     	  <source src="./sounds/scratch_2.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('scratch_3').pause();document.getElementById('scratch_3').currentTime = 0; document.getElementById('scratch_3').play()"  class="waves-effect waves-light btn">Scratch 3</button>
+      <button onclick="document.getElementById('scratch_3').pause();document.getElementById('scratch_3').currentTime = 0; document.getElementById('scratch_3').play()"  class="waves-effect waves-light btn black">Scratch 3</button>
     	<audio id="scratch_3">
     	  <source src="./sounds/scratch_3.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('scratch_4').pause();document.getElementById('scratch_4').currentTime = 0; document.getElementById('scratch_4').play()"  class="waves-effect waves-light btn">Scratch 4</button>
+      <button onclick="document.getElementById('scratch_4').pause();document.getElementById('scratch_4').currentTime = 0; document.getElementById('scratch_4').play()"  class="waves-effect waves-light btn black">Scratch 4</button>
     	<audio id="scratch_4">
     	  <source src="./sounds/scratch_4.mp3">
     	</audio>
     </div>
 
     <div class="col s3 center">
-      <button onclick="document.getElementById('scratch_5').pause();document.getElementById('scratch_5').currentTime = 0; document.getElementById('scratch_5').play()"  class="waves-effect waves-light btn">Scratch 5</button>
+      <button onclick="document.getElementById('scratch_5').pause();document.getElementById('scratch_5').currentTime = 0; document.getElementById('scratch_5').play()"  class="waves-effect waves-light btn black">Scratch 5</button>
     	<audio id="scratch_5">
     	  <source src="./sounds/scratch_5.mp3">
     	</audio>
@@ -205,6 +227,12 @@
   }
   #collection2 {
     display: none;
+  }
+
+  body {
+    background: url('http://www.trbimg.com/img-50c508cc/turbine/laff-boz-hood-picture/750/750x422');
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 </style>
 
@@ -308,7 +336,9 @@
           widget2 = SC.Widget(document.getElementById('tracktwo'));
         }
 
+
         if (ui.value < 100){
+
           if ($('#tracktwo').length){
             widget2.getVolume(function(volume){
               var decVol = (ui.value / Math.pow(100, 1));
@@ -316,9 +346,10 @@
               widget2.setVolume(decVol);
             })
           }
+
         }
         if (ui.value == 100){
-          if ($('#trackone').length && $('#tracktwo').length){
+          if ( $('#trackone').length && $('#tracktwo').length){
             widget1.setVolume(1);
             widget2.setVolume(1);
           }

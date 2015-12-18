@@ -28,6 +28,10 @@ myApp.config(function ($routeProvider) {
       templateUrl: 'partials/dj.html',
       access: {restricted: false}
     })
+    .when('/dj-members', {
+      templateUrl: 'partials/dj-members.html',
+      access: {restricted: true}
+    })
     .otherwise({redirectTo: '/welcome'});
 });
 

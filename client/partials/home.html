@@ -1,6 +1,60 @@
-<h1>Yo!</h1>
+<h1>Hottest Mixes Of Today</h1>
+
+
+<div class="row row1" id="row-1">
+
+</div>
+
+<div class="row row2" id="row-2">
+
+</div>
+
+<div class="row row3" id="row-3">
+
+</div>
+
+
 
 <div ng-controller="logoutController">
-  <a ng-click='logout()' class="btn btn-default">Logout</a>
+  <a ng-click='logout()' class="btn btn-default red">Logout</a>
   <a href="http://localhost:3000/#/dj" class="btn btn-default">Start Mixing</a>
+    <a href="http://localhost:3000/#/dj-members" class="btn btn-primary black"> Gangasta Mode </a>
 </div>
+
+
+<br><br><br><br>
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+<script>
+  SC.initialize({
+    client_id: '8214b362bafcc90d268a35aa7d6de6e0'
+  });
+
+  SC.get('/tracks', { limit: 6 }).then(function(tracks) {
+    for(var i = 0; i < 6 ; i++){
+      if (i < 2){
+        var track_url = tracks[i + 1].uri;
+        SC.oEmbed(track_url, { auto_play: false, single_active: false, maxheight: 200 }).then(function(oEmbed) {
+          console.log('oEmbed response: ', oEmbed);
+        $('#row-1').append('<div class="col s4 m5"><div class="card-panel blue"><span class="white-text">' +  oEmbed.html + '</span></div> </div>')
+        });
+
+      }
+      if (i < 4){
+        var track_url = tracks[i + 1].uri;
+        SC.oEmbed(track_url, { auto_play: false, single_active: false, maxheight: 200 }).then(function(oEmbed) {
+          console.log('oEmbed response: ', oEmbed);
+        $('#row-2').append('<div class="col s4 m5"><div class="card-panel blue"><span class="white-text">' +  oEmbed.html + '</span></div> </div>')
+        });
+      }
+      if (i < 6){
+        var track_url = tracks[i + 1].uri;
+        SC.oEmbed(track_url, { auto_play: false, single_active: false, maxheight: 200 }).then(function(oEmbed) {
+          console.log('oEmbed response: ', oEmbed);
+        $('#row-3').append('<div class="col s4 m5"><div class="card-panel blue"><span class="white-text">' +  oEmbed.html + '</span></div> </div>')
+        });
+      }
+
+    }
+  });
+</script>
