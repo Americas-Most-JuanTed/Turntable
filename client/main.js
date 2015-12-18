@@ -26,7 +26,7 @@ myApp.config(function ($routeProvider) {
     })
     .when('/dj', {
       templateUrl: 'partials/dj.html',
-      access: {restricted: true}
+      access: {restricted: false}
     })
     .otherwise({redirectTo: '/welcome'});
 });
