@@ -9,7 +9,7 @@
           <div class="nav-wrapper">
             <form>
               <div class="input-field">
-                <input id="search1" id="search" type="search" required>
+                <input  autocomplete="off" id="search1" id="search" type="search" required>
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
@@ -63,8 +63,13 @@
   </div>
 
   <br><hr><br>
-  <!--This is where the control panel goes-->
 
+  <!--This is the slider-->
+  <div id="slider"></div>
+
+  <br><br>
+
+  <!--This is where the control panel goes-->
   <div class="row row-1">
 
     <div class="col s3 center">
@@ -111,10 +116,8 @@
 <script>
   // initialize the soundcloud api
 
-  var GLOBAL_PLAYER_ONE = false;
-  var GLOBAL_PLAYER_TWO = false;
-
-
+  var TRACK_ONE = null;
+  var TRACK_TWO = null;
 
   SC.initialize({
     client_id: '8214b362bafcc90d268a35aa7d6de6e0',
@@ -127,23 +130,32 @@
     // capture search string first
     var searchString = $('#search1').val();
 
+    if (searchString == ''){
+      $('#collection1').fadeOut();
+    }
+
     SC.get('/tracks', {
       q: searchString,
       limit: '5'
     }).then(function(tracks) {
-      console.log('TRACKS', tracks[0].uri);
-      console.log(tracks)
+      console.log('TRACKS', tracks[0], "END");
       for(var i = 1; i < 6; i++){
-        $('#li1-' + i).html(tracks[i-1].title + '<br><hr>' + '<img src=' + tracks[i-1].artwork_url + '>');
+        $('#li1-' + i).html(tracks[i-1].title + '<br><hr>' + '<img src=' + tracks[i-1].artwork_url + 'alt="artwork">');
         $('#li1-' + i).fadeIn();
       }
 
       if (event.keyCode == 13){
+        $('#collection1').fadeOut();
         var track_url = tracks[0].uri;
         SC.oEmbed(track_url, { auto_play: true, single_active: false, maxheight: 200 }).then(function(oEmbed) {
           console.log('oEmbed response: ', oEmbed);
-          $('#append1').append(oEmbed.html + '<br>' + "<a class='waves-effect waves-light btn'>Stuff</a>" + '<br>');
+          if ($('iframe').hasClass('trackone') || $('#trackone').length){
+            $('.trackone').remove();
+          }
+          $('#append1').append(oEmbed.html);
+          $($('#append1').children()[0]).addClass('trackone').attr('id', 'trackone');
           $('#collection1').fadeOut();
+          TRACK_ONE = $('#trackone');
         });
       }
     });
@@ -154,13 +166,15 @@
     $('#collection2').fadeIn();
     // capture search string first
     var searchString = $('#search2').val();
+    if (searchString == ''){
+      $('#collection2').fadeOut();
+    }
 
     SC.get('/tracks', {
       q: searchString,
       limit: '5'
     }).then(function(tracks) {
       console.log('TRACKS', tracks[0].uri);
-      console.log(tracks)
       for(var i = 1; i < 6; i++){
         $('#li2-' + i).html(tracks[i-1].title + '<br><hr>' + '<img src=' + tracks[i-1].artwork_url + '>');
         $('#li2-' + i).fadeIn();
@@ -169,12 +183,57 @@
       if (event.keyCode == 13){
         var track_url = tracks[0].uri;
         SC.oEmbed(track_url, { auto_play: true, single_active: false, maxheight: 200 }).then(function(oEmbed) {
+          if ($('iframe').hasClass('tracktwo') || $('#tracktwo').length ){
+            $('.tracktwo').remove();
+          }
           $('#append2').append(oEmbed.html);
+          $($('#append2').children()[0]).addClass('tracktwo').attr('id', 'tracktwo');
           $('#collection2').fadeOut();
+          TRACK_TWO = $('#tracktwo');
         });
       }
     });
   });
+
+  // SLIDER STUFF
+    $( "#slider" ).slider({
+      max: 200,
+      value: 100,
+      slide: function(event, ui){
+        // capture both elements
+        var widget1 = null;
+        var widget2 = null;
+
+        if ($('#trackone').length){
+           widget1 = SC.Widget(document.getElementById('trackone'));
+        }
+        if ($('#tracktwo').length){
+          widget2 = SC.Widget(document.getElementById('tracktwo'));
+        }
+
+        if (ui.value < 100){
+          widget1.getVolume(function(volume){
+            var decVol = (ui.value / Math.pow(100, 1));
+            widget1.setVolume(decVol);
+          })
+        }
+        if (ui.value == 100){
+          widget1.getVolume(function(volume){
+            widget1.setVolume(100);
+          })
+          widget2.getVolume(function(volume){
+            widget2.setVolume(100);
+          })
+        }
+        if (ui.value > 100){
+          widget2.getVolume(function(volume){
+            var decVol = ((ui.value - 100) / Math.pow(100, 1));
+            widget2.setVolume(decVol);
+          })
+        }
+        //console.log(ui.value);
+      }
+    });
 
   // find all sounds of buskers licensed under 'creative commons share alike'
 
