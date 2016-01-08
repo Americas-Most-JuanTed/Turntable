@@ -3,6 +3,11 @@
   <div ng-show="error" class="alert alert-danger"></div>
   <form class="form" ng-submit="register()">
     <div class="form-group">
+      <div>
+        <label>Email</label>
+          <input type="text" class="form-control" name="email" ng-model="loginForm.email" required>
+            </div>
+        <div>
       <label>Username</label>
       <input type="text" class="form-control" name="username" ng-model="registerForm.username" required>
     </div>
